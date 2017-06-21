@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}{{ reference }} - Binary Risk Assessment{% endblock title %}
+{% block heading %}
+  Binary Risk Assessments for {{ reference }}
+{% endblock heading %}
+{% block content %}
+  <ul>
+    {%- for assessment in assessments %}
+      <li><a
+          href="{{ url_for('binary_risk_assessment', key=assessment.key.id()) }}"
+      >{{ assessment.created_at.strftime("%c") }}</a>
+        {% if assessment.created_by %}
+          ({{ assessment.created_by.email() }})
+        {% endif %}
+        - {{ assessment.comment }}</li>
+    {% else %}
+      <li>No results found</li>
+    {% endfor %}
+  </ul>
+{% endblock content %}

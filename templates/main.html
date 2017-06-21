@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Binary Risk Assessment{% endblock title %}
+{% block heading %}Binary Risk Assessment{% endblock heading %}
+{% block content %}
+  <p class="lead">A durable way to perform a <a href="">binary risk
+    assessment</a>. This will give you a link to a version you can keep
+    track of in the future.</p>
+
+  <p>
+  <form method="post" action="">
+    {{ form.csrf_token }}
+    {% for item in [form.skills_required, form.resources_required,
+      form.failure_rate, form.coverage, form.vulnerability_accessible,
+      form.preconditions, form.asset_cost, form.asset_value,
+      form.internal, form.external] %}
+      <div class="row checkbox">
+      <div class="form-group">
+        <div class="col-md-1"></div>
+        <div class="col-md-11">{{ item }} {{ item.label }}</div>
+      </div>
+      </div>
+    {% endfor %}
+    <div class="form-group">
+      {{ form.reference.label }}
+      {{ form.reference }}
+    </div>
+    <div class="form-group">
+      {{ form.comment.label }}
+      {{ form.comment(rows=5, cols=40) }}
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <button type="submit" class="btn btn-default">Score</button>
+      </div>
+    </div>
+  </form>
+  </p>
+{% endblock content %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}{{ reference }} - Binary Risk Assessment{% endblock title %}
+{% block heading %}
+  Binary Risk Assessment for {{ reference }}
+{% endblock heading %}
+{% block content %}
+  <p>
+  <table class="table">
+    <tbody>
+    <tr>
+      <th>Likelihood</th>
+      <td>{{ likelihood }}</td>
+    </tr>
+    <tr>
+      <th>Impact</th>
+      <td>{{ impact }}</td>
+    </tr>
+    <tr>
+      <th>Risk</th>
+      <td>{{ risk }}</td>
+    </tr>
+    </tbody>
+  </table>
+  </p>
+
+  <p>{{ comment }}</p>
+{% endblock content %}
