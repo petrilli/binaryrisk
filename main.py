@@ -223,9 +223,6 @@ def binary_risk_form():
         )
         assessment_key = assessment.put()
 
-        print("Likelihood: {}, Impact: {}, Risk: {}".format(
-            likelihood, impact, risk
-        ))
         return redirect(
             url_for('binary_risk_assessment', key=assessment_key.id())
         )
